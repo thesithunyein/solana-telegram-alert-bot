@@ -1,4 +1,4 @@
-app = "CHANGE_ME_APP_NAME" # replace with your unique Fly app name
+app = "solana-telegram-alert-bot-sny"
 primary_region = "iad"
 
 [build]
