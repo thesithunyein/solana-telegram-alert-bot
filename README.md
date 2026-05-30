@@ -33,13 +33,6 @@ $env:MIN_SOL="0.05"
 node scripts/telegram-wallet-alert.js
 ```
 
-## Docker (optional for VPS)
-```
-docker build -t solana-tele-bot .
-docker run -e TELEGRAM_BOT_TOKEN=... -e TELEGRAM_CHAT_ID=... -e MONITORED_ADDRESSES=addr1,addr2 \
-  -e RPC_URL=https://api.mainnet-beta.solana.com -e MIN_SOL=0.05 solana-tele-bot
-```
-
 ## Test
 - Send any tx to/from a monitored address (devnet faucet for tests or small mainnet transfer).
 - You should see a Telegram alert with direction, amount, slot/pending, and explorer link.
