@@ -1,0 +1,7 @@
+﻿{
+  "name": "solana-telegram-alert-bot",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": { "start": "node scripts/telegram-wallet-alert.js" },
+  "dependencies": { "@solana/web3.js": "^1.95.4" }
+}
