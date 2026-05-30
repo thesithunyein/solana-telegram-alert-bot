@@ -16,6 +16,18 @@ MIN_SOL=0.05
 node scripts/telegram-wallet-alert.js
 ```
 
+### Windows auto-start (loads .env)
+1) Create `.env` in the repo root:
+```
+TELEGRAM_BOT_TOKEN=...
+TELEGRAM_CHAT_ID=...
+MONITORED_ADDRESSES=addr1,addr2
+RPC_URL=https://api.mainnet-beta.solana.com
+MIN_SOL=0.05
+```
+2) Double-click `start-bot.cmd` (it reads `.env`, runs the bot).
+3) Auto-run on boot: put a shortcut to `start-bot.cmd` in `shell:startup`.
+
 ## How it works
 - Uses `connection.onLogs` to watch the addresses.
 - Fetches the transaction, computes SOL balance delta, and sends a Telegram message with explorer link.
