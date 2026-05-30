@@ -36,3 +36,14 @@ MIN_SOL=0.05
 
 ## Offer (DM copy)
 “I’ll deploy a private Solana wallet alert bot for your treasury in 24h. Alerts on swaps/transfers/LP adds over $X. Runs on your infra. Pay only after you see it working. $200 + $20/mo support. Demo ready. DM an address to monitor.”
+
+## Fly.io deployment (free tier)
+1) Install Fly CLI: https://fly.io/docs/hands-on/install/
+2) Login: `fly auth login`
+3) In repo root, set your app name in `fly.toml` (`app = "your-unique-name"`).
+4) Set secrets (your env values):
+```
+fly secrets set TELEGRAM_BOT_TOKEN=... TELEGRAM_CHAT_ID=... MONITORED_ADDRESSES=... RPC_URL=https://api.mainnet-beta.solana.com MIN_SOL=0.05
+```
+5) Deploy: `fly deploy`
+Your bot stays on even when your laptop is off (within free tier limits).

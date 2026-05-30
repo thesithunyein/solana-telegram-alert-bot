@@ -1,0 +1,11 @@
+app = "CHANGE_ME_APP_NAME" # replace with your unique Fly app name
+primary_region = "iad"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  NODE_ENV = "production"
+
+[processes]
+  app = "node scripts/telegram-wallet-alert.js"
