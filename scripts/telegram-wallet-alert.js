@@ -63,6 +63,25 @@ async function handleSignature(address, signature, slot, err) {
       commitment: "confirmed",
     });
 
+    const displaySlot = slot ?? tx?.slot ?? "pending";
+
+    if (!tx) {
+      await sendTelegram(
+        [
+          "🚨 Wallet alert",
+          `Address: \`${address}\``,
+          "Action: activity",
+          `Slot: ${displaySlot}`,
+          err ? `Error: ${JSON.stringify(err)}` : null,
+          `Tx: https://explorer.solana.com/tx/${signature}${explorerSuffix}`,
+          "(transaction details not yet available)",
+        ]
+          .filter(Boolean)
+          .join("\n")
+      );
+      return;
+    }
+
     const keys =
       tx?.transaction?.message?.getAccountKeys?.().staticAccountKeys?.map((k) =>
         k.toBase58()
@@ -91,7 +110,7 @@ async function handleSignature(address, signature, slot, err) {
       "🚨 Wallet alert",
       `Address: \`${address}\``,
       `Action: ${direction} ${amount}`,
-      `Slot: ${slot}`,
+      `Slot: ${displaySlot}`,
       err ? `Error: ${JSON.stringify(err)}` : null,
       `Tx: ${explorer}`,
     ]
